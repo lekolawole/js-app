@@ -36,14 +36,36 @@ let pokemonList = [
     },
 ];
 
- 
-let pokemonInfo = ' (height: \n';
+/*
+let i = 0;
+let pokemonMessageHeight = ' (height: ' + pokemonList[i].height + ')';
+let bigPokemon = '- Wow, that\'s a big Pokemon!';
+
+
+for (let i = 1; i < pokemonList.length; i++) {
+    // this will print the array to the console //
+    console.log(pokemonList[i]);
+
+    // this handles the height conditions //
+    if (pokemonList[i].height > 1.2) {
+        document.write(`${pokemonList[i].name} ${pokemonMessageHeight} ${bigPokemon}`);
+    } else {
+        document.write(`${pokemonList[i].name} ${pokemonMessageHeight}`);
+    }
+}
+*/
+
+
+let pokemonInfo = ' (height: ';
+
 for (let i = 1; i < pokemonList.length; i++) {
 
-    if (pokemonList[i].height > 1) {
-        document.write(pokemonList[i].name + `${pokemonInfo} ${pokemonList[i].height}` + ') ' + '- Wow, that\'s a big Pokemon!')
+    if (pokemonList[i].height > 1.2) {
+        document.write(pokemonList[i].name + `${pokemonInfo} ${pokemonList[i].height}` + ') ');
+        document.write('- Wow, that\'s a big Pokemon!');
     } else {
         document.write(pokemonList[i].name + `${pokemonInfo} ${pokemonList[i].height}` + ') ')
     }
-}
+} 
+
 
