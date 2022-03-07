@@ -36,32 +36,55 @@ let pokemonList = [
     },
 ];
 
-/*
-let i = 0;
-let pokemonMessageHeight = ' (height: ' + pokemonList[i].height + ')';
+let pokemonList2 = [
+    {
+        name: 'Blastoise', 
+        height: 1.6, 
+        type:['monster', 'water']
+    },
+    {
+        name: 'Spearow', 
+        height: 0.3, 
+        type:['flying']
+    },
+    {
+        name: 'Sandslash', 
+        height: 1.1, 
+        type:['field']
+    },
+    {
+        name: 'Grimer', 
+        height: 0.9, 
+        type:['amorphous']
+    },
+    {
+        name: 'Staryu', 
+        height: 0.8, 
+        type:['water']
+    },
+    {
+        name: 'Quilava', 
+        height: 0.9, 
+        type:['field']
+    },
+    {
+        name: 'Umbreon', 
+        height: 1, 
+        type:['field']
+    },
+];
+
 let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
-
-for (let i = 1; i < pokemonList.length; i++) {
-    // this will print the array to the console //
-    console.log(pokemonList[i]);
-
-    // this handles the height conditions //
-    if (pokemonList[i].height > 1.2) {
-        document.write(`${pokemonList[i].name} ${pokemonMessageHeight} ${bigPokemon}`);
-    } else {
-        document.write(`${pokemonList[i].name} ${pokemonMessageHeight}`);
-    }
-}
-*/
-
-let bigPokemon = '- Wow, that\'s a big Pokemon!';
-
-for (let i = 0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height > 1.2) {
-        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) ${bigPokemon}<br>`)
-    } else {
-        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})<br>`)
+function printPokemonListDetails(list) {
+    for (let i = 0; i < list.length; i++) { //identifies Pokemon height 
+        if (list[i].height > 1.2) { //prints a message for biggest Pokemon
+            document.write(`${list[i].name} (height: ${list[i].height}) ${bigPokemon}<br>`)
+        } else {
+            document.write(`${list[i].name} (height: ${list[i].height})<br>`)
+        }
     }
 }
 
+printPokemonListDetails(pokemonList);
+printPokemonListDetails(pokemonList2);
