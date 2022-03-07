@@ -55,17 +55,13 @@ for (let i = 1; i < pokemonList.length; i++) {
 }
 */
 
+let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
-let pokemonInfo = ' (height: ';
-
-for (let i = 1; i < pokemonList.length; i++) {
-
+for (let i = 0; i < pokemonList.length; i++) {
     if (pokemonList[i].height > 1.2) {
-        document.write(pokemonList[i].name + `${pokemonInfo} ${pokemonList[i].height}` + ') ');
-        document.write('- Wow, that\'s a big Pokemon!');
+        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height}) ${bigPokemon}<br>`)
     } else {
-        document.write(pokemonList[i].name + `${pokemonInfo} ${pokemonList[i].height}` + ') ')
+        document.write(`${pokemonList[i].name} (height: ${pokemonList[i].height})<br>`)
     }
-} 
-
+}
 
