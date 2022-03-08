@@ -76,6 +76,8 @@ let pokemonList2 = [
 
 let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
+/* ///////////for-loop task 
+
 function printPokemonListDetails(list) {
     for (let i = 0; i < list.length; i++) { //identifies Pokemon height 
         if (list[i].height > 1.2) { //prints a message for biggest Pokemon
@@ -88,3 +90,15 @@ function printPokemonListDetails(list) {
 
 printPokemonListDetails(pokemonList);
 printPokemonListDetails(pokemonList2);
+*/
+
+
+// forEach task 
+
+pokemonList.forEach(function(list){
+            document.write(`${list.name} (height: ${list.height})<br>`);
+});
+
+pokemonList2.forEach(function(list){
+    document.write(`${list.name} (height: ${list.height})<br>`);
+});
