@@ -1,21 +1,3 @@
-let bigPokemon = '- Wow, that\'s a big Pokemon!';
-
-/* ///////////for-loop task 
-
-function printPokemonListDetails(list) {
-    for (let i = 0; i < list.length; i++) { //identifies Pokemon height 
-        if (list[i].height > 1.2) { //prints a message for biggest Pokemon
-            document.write(`${list[i].name} (height: ${list[i].height}) ${bigPokemon}<br>`)
-        } else {
-            document.write(`${list[i].name} (height: ${list[i].height})<br>`)
-        }
-    }
-}
-
-printPokemonListDetails(pokemonList);
-printPokemonListDetails(pokemonList2);
-*/
-
 // Creating the IIFE
 
 let pokemonRepository = (function(list) {
@@ -50,7 +32,15 @@ let pokemonRepository = (function(list) {
 
 })();
 
+// Adding more Pokemon
+
+pokemonRepository.add({name: 'Blastoise', height: 1.2, type:['monster', 'water']});
+console.log(pokemonRepository.getAll());
+document.write(pokemonRepository);
+
 // (getAll) and (add) functions
+
+let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
 pokemonRepository.getAll().forEach(function(list){
     if (list.height > 1.2) { //prints a message for biggest Pokemon
@@ -59,18 +49,5 @@ pokemonRepository.getAll().forEach(function(list){
         document.write(`${list.name} (height: ${list.height})<br>`)
     }
 });
-
-pokemonRepository.add({name: 'Blastoise'});
-
-// forEach task 
-
-/*pokemonList.forEach(function(list){
-            document.write(`${list.name} (height: ${list.height})<br>`);
-});
-
-pokemonList2.forEach(function(list){
-    document.write(`${list.name} (height: ${list.height})<br>`);
-});
-*/
 
 
