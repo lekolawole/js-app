@@ -36,7 +36,7 @@ let pokemonRepository = (function(list) {
 
 pokemonRepository.add({name: 'Blastoise', height: 1.2, type:['monster', 'water']});
 console.log(pokemonRepository.getAll());
-document.write(pokemonRepository);
+
 
 // (getAll) and (add) functions
 
