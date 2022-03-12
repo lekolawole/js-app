@@ -3,10 +3,9 @@ body {
 }
 
 .pokemon-button {
-    background-color: rgba(230, 100, 150, 1);
+    border: 2px solid rgba(230, 100, 150, 1);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
     font-size: 22px;
-    border: none;
     border-radius: 5px;
     cursor: pointer;
 }
