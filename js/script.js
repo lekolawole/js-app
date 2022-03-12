@@ -17,6 +17,7 @@ let pokemonRepository = (function(list) {
         {name: 'Wartortle', height: 1, type:['monster', 'water']},
     ];
 
+    // adds pokemon to list
     function add(pokemon) {
         pokemonList.push(pokemon);
     }
@@ -30,7 +31,7 @@ let pokemonRepository = (function(list) {
         console.log(list);
     }
 
-    // Creating addListItem function
+    // Creating addListItem function & buttons
     function addListItem(list) {
 
         let listElement = document.querySelector('.pokemon-list');
@@ -72,10 +73,3 @@ pokemonRepository.getAll().forEach(function(list){
 });
 
 
-/* 
-if (list.height > 1.2) { //prints a message for biggest Pokemon
-        document.write(`${list.name} (height: ${list.height}) ${bigPokemon}<br>`)
-    } else {
-        document.write(`${list.name} (height: ${list.height})<br>`)
-    }
-    */

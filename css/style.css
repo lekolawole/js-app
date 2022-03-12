@@ -3,14 +3,20 @@ body {
 }
 
 .pokemon-button {
-    border: 2px solid rgba(230, 100, 150, 1);
+    border: 2px solid rgba(230, 100, 50, 1);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
     font-size: 22px;
-    border-radius: 5px;
+    
     cursor: pointer;
+    width: 30rem;
+    padding: 12px;
+    text-align: left;
+}
+.pokemon-button:hover {
+    background-color: aliceblue;
 }
 
 li {
     list-style-type: none;
-    margin: 10px;
+    margin: 15px;
 }
