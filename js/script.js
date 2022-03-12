@@ -25,6 +25,11 @@ let pokemonRepository = (function(list) {
         return pokemonList;
     }
 
+    // Creating Event Listeners
+    function showDetails(list) {
+        console.log(list);
+    }
+
     // Creating addListItem function
     function addListItem(list) {
 
@@ -36,8 +41,14 @@ let pokemonRepository = (function(list) {
         button.classList.add('pokemon-button');
         listItem.append(button);
         listElement.append(listItem);
+
+        button.addEventListener('click', () => {
+            showDetails(list);
+        });
     }
     
+
+
     return {
         add: add,
         getAll: getAll,
