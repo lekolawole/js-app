@@ -25,6 +25,11 @@ let pokemonRepository = (function(list) {
         return pokemonList;
     }
 
+    // create addListItem functions 
+    function addListItem(pokemon) {
+
+    }
+    
     return {
         add: add,
         getAll: getAll
@@ -43,11 +48,21 @@ console.log(pokemonRepository.getAll());
 let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
 pokemonRepository.getAll().forEach(function(list){
-    if (list.height > 1.2) { //prints a message for biggest Pokemon
+    let listElement = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button'); 
+    button.innerText = list.name;
+
+    button.classList.add('pokemon-button');
+    listItem.append(button);
+    listElement.append(listItem);
+});
+
+
+/* 
+if (list.height > 1.2) { //prints a message for biggest Pokemon
         document.write(`${list.name} (height: ${list.height}) ${bigPokemon}<br>`)
     } else {
         document.write(`${list.name} (height: ${list.height})<br>`)
     }
-});
-
-
+    */
