@@ -74,6 +74,28 @@ let pokemonRepository = (function () {
         });
     }
 
+    // UI Tasks - Real Time Validation Forms
+
+    function validateEmail() {
+        let value = emailInput.value;
+        let hasAtSign = value.indexOf('@') > -1;
+        let hasDot = value.indexOf('.') > -1;
+        return value && hasAtSign && hasDot;
+    }
+
+    function validatePassword() {
+        let value = passwordInput.value;
+        return value && value.length >= 8;
+    }
+
+    function showErrorMessage(input, message) {
+        let container = input.parentElement;
+        let error = container.querySelector('.error-message');
+        if (error) {
+            container.removeChild(error);
+        }
+    }
+
 
     return {
         add: add,
