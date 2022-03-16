@@ -2,6 +2,7 @@
 
 let pokemonRepository = (function () {
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let modalContainer = document.querySelector('#modal-container');
     let pokemonList = [];
 
     // adds pokemon to list
@@ -18,14 +19,14 @@ let pokemonRepository = (function () {
 
         let listElement = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
-        let button = document.createElement('button');
-        button.innerText = list.name;
+        let pokemonButton = document.createElement('button');
+        pokemonButton.innerText = list.name;
 
-        button.classList.add('pokemon-button');
-        listItem.append(button);
+        pokemonButton.classList.add('pokemon-button');
+        listItem.append(pokemonButton);
         listElement.append(listItem);
 
-        button.addEventListener('click', () => {
+        pokemonButton.addEventListener('click', () => {
             showDetails(list);
         });
     }
@@ -41,7 +42,6 @@ let pokemonRepository = (function () {
                     detailsUrl: item.url
                 };
                 add(pokemon);
-                console.log(pokemon);
             });
         }).catch(function (e) {
             console.error(e);
@@ -73,8 +73,45 @@ let pokemonRepository = (function () {
     function showDetails(item) {
         loadDetails(item).then(function () {
             // add in code for modal 
+
+            showModal();
         });
     }
+
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
+
+    function showModal(title, text) {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.innerHTML = '';
+
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+
+        let pokemonTitleElement = document.createElement('h1');
+        pokemonTitleElement.innerText = title;
+
+        let contentElement = document.createElement('p');
+        contentElement.innerText = text;
+
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(pokemonTitleElement);
+        modal.appendChild(contentElement);
+        modalContainer.appendChild(modal);
+
+        modalContainer.classList.add('is-visible');
+    }
+
+    document.querySelector('#show-modal').addEventListener('click', () => {
+        showModal(title, 'this is text');
+    });
 
     return {
         add: add,
@@ -99,6 +136,123 @@ pokemonRepository.getAll().forEach(function(pokemon){
    pokemonRepository.addListItem(pokemon)
 });
 // END OF pokemonRepository ------------------------------------------// 
+
+
+// IIFE - Creating Pokemon modal with images and stats -----------------
+
+/*let pokemonModal = (function () {
+
+    function showModal(title, text) {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.innerHTML = '';
+
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = title;
+
+        let contentElement = document.createElement('p');
+        contentElement.innerText = text;
+
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modalContainer.appendChild(modal);
+
+        modalContainer.classList.add('is-visible');
+    }
+
+    document.querySelector('#show-modal').addEventListener('click', () => {
+        showModal('Modal Title', 'This is the modal content!');
+    });
+
+    // Creating dialogs 
+
+    function showDialog(title, text) {
+        showModal(title, text);
+
+        let modalContainer = document.querySelector('#modal-container');
+        let modal = modalContainer.querySelector('.modal');
+
+        let confirmButton = document.createElement('button');
+        confirmButton.classList.add('modal-confirm');
+        confirmButton.innerText = 'Confirm';
+
+        let cancelButton = document.createElement('button');
+        cancelButton.classList.add('.modal-cancel');
+        cancelButton.innerText = 'Cancel';
+        confirmButton.focus();
+
+        modal.appendChild(confirmButton);
+        modal.appendChild(cancelButton);
+
+        // Return the promise that resolves when confirmed, else rejects
+        return new Promise((resolve, reject) => {
+            cancelButton.addEventListener('click', hideModal);
+            confirmButton.addEventListener('click', () => {
+                dialogPromiseReject = null;
+                hideModal();
+                resolve();
+            });
+            dialogPromiseReject = reject;
+        });
+    }
+
+    // Closing the modal 
+
+    let dialogPromiseReject;
+
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+
+        if (dialogPromiseReject) {
+            dialogPromiseReject();
+            dialogPromiseReject = null;
+        }
+    }
+
+    // ESC key
+
+    window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visble')) {
+            hideModal();
+        }
+    });
+
+    let modalContainer = document.querySelector('#modal-container')
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
+
+    document.querySelector('#show-dialog').addEventListener('click', () => {
+        showDialog('Confirm action', 'Are you sure you want to do this?').then(function () {
+            alert('Confirmed!');
+        }, () => {
+            alert('Not confirmed!');
+        });
+    });
+
+
+});
+
+pokemonModal();*/
+
+
+
+
+
+
 
 // IIFE - UI Tasks - Real Time Validation Forms 
 
@@ -173,104 +327,3 @@ pokemonRepository.getAll().forEach(function(pokemon){
 })();
 
 // ------------------- end of form validation IIFE --------------------//
-
-function showModal(title, text) {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.innerHTML = '';
-
-    let modal = document.createElement('div');
-    modal.classList.add('modal');
-
-    let closeButtonElement = document.createElement('button');
-    closeButtonElement.classList.add('modal-close');
-    closeButtonElement.innerText = 'Close';
-    closeButtonElement.addEventListener('click', hideModal);
-
-    let titleElement = document.createElement('h1');
-    titleElement.innerText = title;
-
-    let contentElement = document.createElement('p');
-    contentElement.innerText = text;
-
-    modal.appendChild(closeButtonElement);
-    modal.appendChild(titleElement);
-    modal.appendChild(contentElement);
-    modalContainer.appendChild(modal);
-
-    modalContainer.classList.add('is-visible');
-}
-
-document.querySelector('#show-modal').addEventListener('click', () => {
-    showModal('Modal Title', 'This is the modal content!');
-});
-
-// Creating dialogs 
-
-function showDialog(title, text) {
-    showModal(title, text);
-
-    let modalContainer = document.querySelector('#modal-container');
-    let modal = modalContainer.querySelector('.modal');
-
-    let confirmButton = document.createElement('button');
-    confirmButton.classList.add('modal-confirm');
-    confirmButton.innerText = 'Confirm';
-
-    let cancelButton = document.createElement('button');
-    cancelButton.classList.add('.modal-cancel');
-    cancelButton.innerText = 'Cancel';
-    confirmButton.focus();
-
-    modal.appendChild(confirmButton);
-    modal.appendChild(cancelButton);
-
-    // Return the promise that resolves when confirmed, else rejects
-    return new Promise((resolve, reject) => {
-        cancelButton.addEventListener('click', hideModal);
-        confirmButton.addEventListener('click', () => {
-            dialogPromiseReject = null;
-            hideModal();
-            resolve();
-        });
-        dialogPromiseReject = reject;
-    });
-}
-
-// Closing the modal 
-
-let dialogPromiseReject;
-
-function hideModal() {
-    let modalContainer = document.querySelector('#modal-container');
-    modalContainer.classList.remove('is-visible');
-
-    if (dialogPromiseReject) {
-        dialogPromiseReject();
-        dialogPromiseReject = null;
-    }
-}
-
-// ESC key
-
-window.addEventListener('keydown', (e) => {
-    let modalContainer = document.querySelector('#modal-container');
-    if (e.key === 'Escape' && modalContainer.classList.contains('is-visble')) {
-        hideModal();
-    }
-});
-
-let modalContainer = document.querySelector('#modal-container')
-modalContainer.addEventListener('click', (e) => {
-    let target = e.target;
-    if (target === modalContainer) {
-        hideModal();
-    }
-});
-
-document.querySelector('#show-dialog').addEventListener('click', () => {
-    showDialog('Confirm action', 'Are you sure you want to do this?').then(function () {
-        alert('Confirmed!');
-    }, () => {
-        alert('Not confirmed!');
-    });
-});
