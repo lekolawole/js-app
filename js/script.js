@@ -47,7 +47,12 @@ let pokemonRepository = (function () {
         })
     }
 
+    let message = document.querySelector('.message');
+
     function loadDetails(item) {
+        message.classList.add("show");
+
+        
         let url = item.detailsUrl;
         return fetch(url).then(function (response) {
             return response.json();
@@ -56,6 +61,7 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
+            message.classList.remove("show");
         }).catch(function (e) {
             console.error(e);
         });
@@ -86,15 +92,7 @@ pokemonRepository.loadList().then(function () {
     });
 });
 
-// Adding more Pokemon
-
-pokemonRepository.add({name: 'Blastoise', height: 1.2, type:['monster', 'water']});
-console.log(pokemonRepository.getAll());
-
-
 // (getAll) and (add) functions
-
-let bigPokemon = '- Wow, that\'s a big Pokemon!';
 
 pokemonRepository.getAll().forEach(function(pokemon){
    pokemonRepository.addListItem(pokemon)
