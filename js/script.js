@@ -48,11 +48,23 @@ let pokemonRepository = (function () {
         })
     }
 
+    
     let loadingMessage = document.querySelector('.message');
+
+    // toggles loading messages with class-lists
+    function toggleLoadingMessage(item) {
+        loadingMessage.classList.add("show")
+    }
+
+    function toggleLoadingMessageOff(item) {
+        setTimeout(function () {
+            loadingMessage.classList.remove("show");
+        }, 500);
+    }
 
     // loads details of Pokemon when clicked
     function loadDetails(item) {
-        loadingMessage.classList.add("show");
+        toggleLoadingMessage(item);
 
 
         let url = item.detailsUrl;
@@ -63,7 +75,6 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.front_default;
             item.height = details.height;
             item.types = details.types;
-            loadingMessage.classList.remove("show");
         }).catch(function (e) {
             console.error(e);
         });
@@ -90,6 +101,11 @@ let pokemonRepository = (function () {
     }
 
     function showModal(title, newImageUrl, text) {
+        //displays the modal after .5s for a consistent UI experience
+        setTimeout(function () {
+            modalContainer.classList.add('is-visible');
+        }, 500);
+
         let modalContainer = document.querySelector('#modal-container');
         modalContainer.innerHTML = '';
 
@@ -107,7 +123,7 @@ let pokemonRepository = (function () {
 
         let pokemonImg = document.createElement('img');
         pokemonImg.src = `${newImageUrl}`; //included backtik(`)- make url in src
-        pokemonImg.classList.add('.pokemon-modal-img');
+        pokemonImg.classList.add('pokemon-modal-img');// don't need to include '.'
 
         let contentElement = document.createElement('p');
         contentElement.innerText = text;
@@ -118,8 +134,9 @@ let pokemonRepository = (function () {
         modal.appendChild(contentElement);
         modalContainer.appendChild(modal);
 
-        modalContainer.classList.add('is-visible');
         modalContainer.addEventListener('click', hideModal);
+
+        toggleLoadingMessageOff()// removes loading message after API is loaded
     }
 
 

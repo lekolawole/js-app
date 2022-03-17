@@ -8,32 +8,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Pokédex</h1>
+    <header>
+      <h1>Pokédex</h1>
+      
+      <fieldset>
+        <form id="register-form">
+          <div class="input-wrapper">
+            <label for="email">E-mail</label>
+            <input id="email">
+          </div>
+      
+          <div class="input-wrapper">
+            <label for="password">Password</label>
+            <input id="password" type="password">
+          </div>
+          <button>Register</button>
+        </form>
+      </fieldset>
 
-    <fieldset>
-      <form id="register-form">
-        <div class="input-wrapper">
-          <label for="email">E-mail</label>
-          <input id="email">
-        </div>
-    
-        <div class="input-wrapper">
-          <label for="password">Password</label>
-          <input id="password" type="password">
-        </div>
-        <button>Register</button>
-      </form>
-    </fieldset>
+    </header>
+    <div class="pokemon-wrapper">
 
-    <button id="show-modal">Show Modal</button>
-    <button id="show-dialog">Show Dialog</button>
-    <div id="modal-container"></div>
+      <div id="modal-container"></div>
 
-    <div class="message">
-      <p>Loading Details...</p>
+      <div class="message">
+        <p>Loading Details...</p>
+      </div>
+      <ul class="pokemon-list"></ul>
     </div>
-    <ul class="pokemon-list">
-    </ul>
 
    
 

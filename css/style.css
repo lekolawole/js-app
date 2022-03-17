@@ -26,6 +26,18 @@ li {
     display: none;
 }
 
+@keyframes message {
+    0% {
+        background-color: rgba(230, 100, 50, 0.7);
+    }
+    50% {
+        background-color: rgba(224, 119, 92, 0.705)
+    }
+    100% {
+        background-color: rgba(230, 62, 50, 0.7);
+    }
+}
+
 .message {
     display: none;
     background-color: rgba(230, 100, 50, 0.7);
@@ -91,4 +103,23 @@ label {
   box-sizing: border-box;
   background: #fff;
   padding: 15px;
+}
+
+.pokemon-modal-img {
+    border: solid 4px rgb(12, 30, 80);
+    border-radius: 50%;
+    padding: 5%;
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+fieldset {
+    margin-left: 60%;
+}
+
+.pokemon-wrapper {
+    margin: 0 30%;
 }
