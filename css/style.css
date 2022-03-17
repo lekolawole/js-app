@@ -1,16 +1,25 @@
+/*
+
+    {Pokemon Color Scheme
+      Primary Red: #EE534F;
+      Secondary Color: #FECA1C
+      Text Color: #fff;
+      Secondary Text Color: #3861A8
+*/
+
 body {
     font-family: 'Roboto', sans-serif;
 }
 
 .pokemon-button {
-    border: 2px solid rgba(230, 100, 50, 1);
+    border: 2px solid rgb(100, 150, 150);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', sans-serif;
     font-size: 22px;
-    
+    border-radius: 15px;
     cursor: pointer;
     width: 30rem;
     padding: 12px;
-    text-align: left;
+    text-align: center;
 }
 .pokemon-button:hover {
     background-color: aliceblue;
@@ -19,6 +28,7 @@ body {
 li {
     list-style-type: none;
     margin: 15px;
+    text-transform: uppercase;
 }
 
 
@@ -26,30 +36,23 @@ li {
     display: none;
 }
 
-@keyframes message {
-    0% {
-        background-color: rgba(230, 100, 50, 0.7);
-    }
-    50% {
-        background-color: rgba(224, 119, 92, 0.705)
-    }
-    100% {
-        background-color: rgba(230, 62, 50, 0.7);
-    }
-}
 
 .message {
     display: none;
-    background-color: rgba(230, 100, 50, 0.7);
+    background-color: #3861A8;
     text-align: center;
-    color: white;
-    font-size: 18px;
+    color: #FECA1C;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
     font-family: 'Roboto', sans-serif;
     border-radius: 5rem;
     padding: 2% 1% 2% 1%;
-    margin-right: 25%;
-    margin-left: 25%;
+    margin-right: 30%;
+    margin-left: 30%;
     margin-bottom: 5%;
+    position: fixed;
+    top: 26px;
 }
 
 .show {
@@ -103,6 +106,8 @@ label {
   box-sizing: border-box;
   background: #fff;
   padding: 15px;
+  border: 2px solid ;
+  width: 25rem;
 }
 
 .pokemon-modal-img {
@@ -114,12 +119,17 @@ label {
 header {
     display: flex;
     flex-flow: row nowrap;
-}
-
-fieldset {
-    margin-left: 60%;
+    margin-bottom: 5%;
+    justify-content: center;
+    background-color: #EE534F;
 }
 
 .pokemon-wrapper {
     margin: 0 30%;
+}
+
+.poke-title {
+  text-align: center;
+  color: #fff;
+  font-size: 48px;
 }
