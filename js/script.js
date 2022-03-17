@@ -73,20 +73,27 @@ let pokemonRepository = (function () {
     function showDetails(item) {
         loadDetails(item).then(function () {
             // add in code for modal 
-
-            showModal();
+            findImageUrl(item); //calls function to hold url for modal later
         });
     }
-
+    // Creates new URL for pokemon image based on clicked Pokemon
+    function findImageUrl(item) {
+        let newImageUrl = item.imageUrl;
+        console.log(newImageUrl);
+        showModal(item.name, newImageUrl, item.height);
+    }
+    
+    // Functions for hiding/showing modal containing Pokemon details 
     function hideModal() {
         let modalContainer = document.querySelector('#modal-container');
         modalContainer.classList.remove('is-visible');
     }
 
-    function showModal(title, text) {
+    function showModal(title, newImageUrl, text) {
         let modalContainer = document.querySelector('#modal-container');
         modalContainer.innerHTML = '';
 
+                // Creating modal elemens in HTML
         let modal = document.createElement('div');
         modal.classList.add('modal');
 
@@ -98,20 +105,24 @@ let pokemonRepository = (function () {
         let pokemonTitleElement = document.createElement('h1');
         pokemonTitleElement.innerText = title;
 
+        let pokemonImg = document.createElement('img');
+        pokemonImg.src = `${newImageUrl}`; //included backtik(`)- make url in src
+        pokemonImg.classList.add('.pokemon-modal-img');
+
         let contentElement = document.createElement('p');
         contentElement.innerText = text;
-
+        
         modal.appendChild(closeButtonElement);
         modal.appendChild(pokemonTitleElement);
+        modal.appendChild(pokemonImg);
         modal.appendChild(contentElement);
         modalContainer.appendChild(modal);
 
         modalContainer.classList.add('is-visible');
+        modalContainer.addEventListener('click', hideModal);
     }
 
-    document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal(title, 'this is text');
-    });
+
 
     return {
         add: add,
@@ -138,122 +149,6 @@ pokemonRepository.getAll().forEach(function(pokemon){
 // END OF pokemonRepository ------------------------------------------// 
 
 
-// IIFE - Creating Pokemon modal with images and stats -----------------
-
-/*let pokemonModal = (function () {
-
-    function showModal(title, text) {
-        let modalContainer = document.querySelector('#modal-container');
-        modalContainer.innerHTML = '';
-
-        let modal = document.createElement('div');
-        modal.classList.add('modal');
-
-        let closeButtonElement = document.createElement('button');
-        closeButtonElement.classList.add('modal-close');
-        closeButtonElement.innerText = 'Close';
-        closeButtonElement.addEventListener('click', hideModal);
-
-        let titleElement = document.createElement('h1');
-        titleElement.innerText = title;
-
-        let contentElement = document.createElement('p');
-        contentElement.innerText = text;
-
-        modal.appendChild(closeButtonElement);
-        modal.appendChild(titleElement);
-        modal.appendChild(contentElement);
-        modalContainer.appendChild(modal);
-
-        modalContainer.classList.add('is-visible');
-    }
-
-    document.querySelector('#show-modal').addEventListener('click', () => {
-        showModal('Modal Title', 'This is the modal content!');
-    });
-
-    // Creating dialogs 
-
-    function showDialog(title, text) {
-        showModal(title, text);
-
-        let modalContainer = document.querySelector('#modal-container');
-        let modal = modalContainer.querySelector('.modal');
-
-        let confirmButton = document.createElement('button');
-        confirmButton.classList.add('modal-confirm');
-        confirmButton.innerText = 'Confirm';
-
-        let cancelButton = document.createElement('button');
-        cancelButton.classList.add('.modal-cancel');
-        cancelButton.innerText = 'Cancel';
-        confirmButton.focus();
-
-        modal.appendChild(confirmButton);
-        modal.appendChild(cancelButton);
-
-        // Return the promise that resolves when confirmed, else rejects
-        return new Promise((resolve, reject) => {
-            cancelButton.addEventListener('click', hideModal);
-            confirmButton.addEventListener('click', () => {
-                dialogPromiseReject = null;
-                hideModal();
-                resolve();
-            });
-            dialogPromiseReject = reject;
-        });
-    }
-
-    // Closing the modal 
-
-    let dialogPromiseReject;
-
-    function hideModal() {
-        let modalContainer = document.querySelector('#modal-container');
-        modalContainer.classList.remove('is-visible');
-
-        if (dialogPromiseReject) {
-            dialogPromiseReject();
-            dialogPromiseReject = null;
-        }
-    }
-
-    // ESC key
-
-    window.addEventListener('keydown', (e) => {
-        let modalContainer = document.querySelector('#modal-container');
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visble')) {
-            hideModal();
-        }
-    });
-
-    let modalContainer = document.querySelector('#modal-container')
-    modalContainer.addEventListener('click', (e) => {
-        let target = e.target;
-        if (target === modalContainer) {
-            hideModal();
-        }
-    });
-
-    document.querySelector('#show-dialog').addEventListener('click', () => {
-        showDialog('Confirm action', 'Are you sure you want to do this?').then(function () {
-            alert('Confirmed!');
-        }, () => {
-            alert('Not confirmed!');
-        });
-    });
-
-
-});
-
-pokemonModal();*/
-
-
-
-
-
-
-
 // IIFE - UI Tasks - Real Time Validation Forms 
 
 (function () {
@@ -267,7 +162,7 @@ pokemonModal();*/
         if (error) {
             container.removeChild(error);
         }
-
+            // Creates error messages as user starts typing 
         if (message) {
             let error = document.createElement('div');
             error.classList.add('error-message');
