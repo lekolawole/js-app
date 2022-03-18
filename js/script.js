@@ -118,6 +118,7 @@ let pokemonRepository = (function () {
         closeButtonElement.innerText = 'Close';
         closeButtonElement.addEventListener('click', hideModal);
 
+
         let pokemonTitleElement = document.createElement('h1');
         pokemonTitleElement.innerText = title;
 
@@ -139,7 +140,23 @@ let pokemonRepository = (function () {
         toggleLoadingMessageOff()// removes loading message after API is loaded
     }
 
+    // Esc key functionality 
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+    
+    window.addEventListener('keydown', (e) => {
 
+        if (e.key === 'Escape') {
+            hideModal();
+        }
+    });
+
+    modalContainer.addEventListener('click', (e) => {
+        let target = e.target;
+        if (target === modalContainer) {
+            hideModal();
+        }
+    });
 
     return {
         add: add,
