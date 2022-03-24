@@ -167,3 +167,29 @@ header {
     left: 100px;
   }
 }
+
+/* TEST FOR BOOTSTRAP */ 
+
+header .row div {
+  background-color: pink;
+  border: 1px solid tomato;
+  height: 50px;
+}
+
+main .row div,
+main .row aside, 
+main .row article {
+  background-color: lightgreen;
+  border: 1px solid green;
+  height: 80px;
+}
+
+footer .row div {
+  background-color: lightyellow;
+  border: 1px solid orange;
+  height: 50px;
+}
+
+.page-container {
+  margin-top: 60px;
+}
