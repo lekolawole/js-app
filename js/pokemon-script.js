@@ -23,8 +23,9 @@ let pokemonRepository = (function () {
         let pokemonButton = document.createElement('button');
         pokemonButton.innerText = list.name;
 
+        //data-toggle="modal" data-target="#Pokemon" - this piece of code triggers the modal
         pokemonButton.setAttribute('data-toggle', 'modal');
-        pokemonButton.setAttribute('data-target', '#pokemonModal');
+        pokemonButton.setAttribute('data-target', '#Pokemon');
         pokemonButton.classList.add('pokemon-button', 'btn');
         listItem.append(pokemonButton);
         listElement.append(listItem);
