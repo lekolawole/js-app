@@ -40,10 +40,10 @@
   </nav>
   
   <!-- Modal -->
-  <div class="container-fluid pokemon-wrapper">
+  <!-- <div class="container pokemon-wrapper">
     <div class="row">
       <div class="col">
-        <ul class="list-group pokemon-list list-unstyled flex-row flex-wrap w-100 just-content: center" data-toggle="modal" data-target="#Pokemon"></ul>
+        <ul class="list-group pokemon-list list-unstyled just-content: center" data-toggle="modal" data-target="#Pokemon"></ul>
         <div class="modal fade" id="Pokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -65,14 +65,34 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="container pokemon-wrapper"> 
+    <!-- <div id="modal-container"></div> -->
+    <ul class="list-group pokemon-list list-unstyled just-content: center" data-toggle="modal" data-target="#Pokemon"></ul>
+    <div class="modal fade" id="Pokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="col-12 modal-title text-center text-capitalize" id="exampleModalLabel">Modal title</h5>
+          </div>
+          <div class="modal-body text-capitalize">
+            ...
+            <div class="row">
+              <div class="col"><img></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
-  <div class="pokemon-wrapper"> 
 
-    <div id="modal-container"></div>
-    <ul class="list-group pokemon-list"></ul>
-  </div>
-
-
+<!-- <div class="message">
+  <p>Loading Details...</p>
+</div> -->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

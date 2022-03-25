@@ -30,9 +30,9 @@ let pokemonRepository = (function () {
         listItem.append(pokemonButton);
         listElement.append(listItem);
 
-        /*pokemonButton.addEventListener('click', () => {
+        pokemonButton.addEventListener('click', () => {
             showDetails(list);
-        });*/
+        });
     }
 
     // loads list of pokemon in browser
@@ -46,6 +46,7 @@ let pokemonRepository = (function () {
                     detailsUrl: item.url
                 };
                 add(pokemon);
+                //console.log(pokemon);
             });
         }).catch(function (e) {
             console.error(e);
@@ -53,7 +54,7 @@ let pokemonRepository = (function () {
     }
 
 
-    let loadingMessage = document.querySelector('.message');
+    //let loadingMessage = document.querySelector('.message');
     /*
         // toggles loading messages with class-lists
         function toggleLoadingMessage(item) {
@@ -68,9 +69,6 @@ let pokemonRepository = (function () {
 
     // loads details of Pokemon when clicked
     function loadDetails(item) {
-        //toggleLoadingMessage(item);
-
-
         let url = item.detailsUrl;
         return fetch(url).then(function (response) {
             return response.json();
@@ -79,8 +77,6 @@ let pokemonRepository = (function () {
             item.imageUrl = details.sprites.front_default;
             item.height = `Height: ${details.height}`;
             item.types = details.types;
-
-            showModal(item);
         }).catch(function (e) {
             console.error(e);
         });
@@ -90,15 +86,17 @@ let pokemonRepository = (function () {
     function showDetails(item) {
         loadDetails(item).then(function () {
             // add in code for modal 
-            findImageUrl(item); //calls function to hold url for modal later
+            //findImageUrl(item); //calls function to hold url for modal later
+            console.log(item);
+            showModal(item);
         });
     }
-    // Creates new URL for pokemon image based on clicked Pokemon
-    function findImageUrl(item) {
-        let newImageUrl = item.imageUrl;
-        console.log(newImageUrl);
-        /*showModal(item.name, newImageUrl, item.height);*/
-    }
+    // // Creates new URL for pokemon image based on clicked Pokemon
+    // function findImageUrl(item) {
+    //     let newImageUrl = item.imageUrl;
+    //     console.log(newImageUrl);
+    //     /*showModal(item.name, newImageUrl, item.height);*/
+    // }
 
     /*// Functions for hiding/showing modal containing Pokemon details 
     function hideModal() {
@@ -106,7 +104,7 @@ let pokemonRepository = (function () {
         modalContainer.classList.remove('is-visible');
     }*/
 
-    function showModal(title, newImageUrl, text) {
+    function showModal(item) {
         /*//displays the modal after .5s for a consistent UI experience
         setTimeout(function () {
             modalContainer.classList.add('is-visible');
@@ -153,7 +151,7 @@ let pokemonRepository = (function () {
         //filling Modal with pokemon info
 
         let pokemonName = $("<h1>" + item.name + "</h1>");
-        let pokemonImg = $('<img class="pokemonImage" style="width:50%"');
+        let pokemonImg = $('<img class=\'pokemon-image\'>');
         pokemonImg.attr("src", item.imageUrl);
         let pokemonHeight = $("<p>" + item.height + "</p>");
         let pokemonTypes = $("<p>" + item.types + "</p>");
