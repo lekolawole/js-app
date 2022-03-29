@@ -1,6 +1,6 @@
 # js-app
  
-## A directory of Pokemon loaded from PokemonAPI. 
+#### A directory of Pokemon loaded from PokemonAPI. 
 
 
 ## Objective Summary 
