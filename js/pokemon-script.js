@@ -107,16 +107,39 @@ let pokemonRepository = (function () {
         modalBody.append(pokemonTypes);
     }
 
-   
+//    function searchPokemon(value) {
+//        // Empties list-group when user starts typing 
+//        $('.list-group').empty();
+//        console.log(value);
+//    }
 
+    function searchPokemon() {
+        //Declare varables & GET pokemonButtons(li elements)
+        let input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('searchPokemon');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById('pokemonUL');
+        li = ul.getElementsByTagName('li');
 
+        //Loop through list names, and hide searches that don't match
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("button")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
 
     return {
         add: add,
         getAll: getAll,
         addListItem: addListItem,
         loadList: loadList,
-        loadDetails: loadDetails
+        loadDetails: loadDetails,
+        searchPokemon
     };
 
 })();

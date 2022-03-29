@@ -19,7 +19,11 @@
     <h1 class="poke-title">Pokédex</h1>
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="#">Pokemon Finder</a>
+    <a class="navbar-brand" href="#">
+      <a href="https://pokeapi.co">
+        <img class="border rounded poke-api-logo" width="150" src="./img/pokeapi-logo.png" alt="pokeAPI logo">Powered by PokemonAPI</img>
+      </a>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -37,11 +41,14 @@
         </li>
       </ul>
     </div>
+    <div class="p-2">
+      <form class="form-inline"></form>
+        <input class="form-control mr-sm-2 search" type="search" id="searchPokemon" placeholder="Search for pokemon" aria-label="Search" onkeyup="pokemonRepository.searchPokemon(value)"/>
   </nav>
   
   <!-- Modal -->
   <div class="container pokemon-wrapper"> 
-    <ul class="row list-group pokemon-list flex-row list-unstyled just-content: center"></ul>
+    <ul id="pokemonUL" class="row list-group pokemon-list flex-row list-unstyled just-content: center"></ul>
     <div class="modal fade" id="Pokemon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog just-content: center" role="document">
         <div class="modal-content">
