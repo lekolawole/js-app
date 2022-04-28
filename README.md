@@ -1,4 +1,4 @@
-# js-app
+# Pokedex-js-app
  
 #### A directory of Pokemon loaded from PokemonAPI. 
 
