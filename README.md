@@ -19,3 +19,7 @@ To build a small web application with HTML, CSS, and JavaScript that loads data 
 - Loads data from an external source (<a href='https://pokeapi.co/api/v2/pokemon/?limit=150'>PokeAPI</a>)
 - Displays a list of Pokemon from the API
 - Displays a modal with Pokemon information when selected 
+
+## Deployment 
+
+View the site live <a href="https://lekolawole.github.io/pokedex-js-app/">here</a>
